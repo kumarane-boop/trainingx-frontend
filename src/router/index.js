@@ -1,26 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import DashboardView from '../views/DashboardView.vue'
-import { useUserStore } from '../stores/user'
+import CoursesView from '../views/CoursesView.vue'
 
 const routes = [
   { path: '/', name: 'login', component: LoginView },
-  { path: '/dashboard', name: 'dashboard', component: DashboardView, meta: { requiresAuth: true } }
+  { path: '/dashboard', name: 'dashboard', component: DashboardView, meta: { requiresAuth: true } },
+  { path: '/courses', name: 'courses', component: CoursesView }
 ]
 
-const router = createRouter({ history: createWebHistory(), routes })
-
-router.beforeEach(async (to) => {
-  const user = useUserStore()
-  if (user.loading) await user.refresh()
-  if (to.meta.requiresAuth && !user.isAuthenticated) {
-    // Let server also protect it, but for nicer UX, trigger login here:
-    user.login('github', to.fullPath)   // use 'aad' if you enabled Microsoft
-    return false
-  }
+const router = createRouter({
+  history: createWebHistory(),
+  routes
 })
 
 export default router
+
 
 
 
