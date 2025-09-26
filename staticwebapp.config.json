@@ -1,0 +1,16 @@
+{
+  "navigationFallback": { "rewrite": "/index.html" },
+  "routes": [
+    { "route": "/dashboard", "allowedRoles": ["authenticated"] },
+    { "route": "/api/*", "allowedRoles": ["authenticated"] }
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/github",
+      "statusCode": 302
+    }
+  }
+}
+
+
+
