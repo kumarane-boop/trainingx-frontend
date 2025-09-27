@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+
 const user = ref(null)
 
 async function loadUser() {
@@ -8,28 +9,30 @@ async function loadUser() {
     if (!res.ok) return
     const data = await res.json()
     user.value = data?.clientPrincipal || null
-  } catch {}
+  } catch { /* ignore */ }
 }
+
 onMounted(loadUser)
 </script>
 
 <template>
-  <nav style="display:flex; gap:12px; align-items:center">
-    <a href="/">Home</a>
-    <a href="/courses">Courses</a>
-    <a href="/trainers">Trainers</a>
-    <a href="/dashboard">Dashboard</a>
+  <nav style="display:flex; gap:14px; align-items:center; padding:10px; border-bottom:1px solid #eee;">
+    <!-- left: public nav -->
+    <RouterLink to="/courses">Courses</RouterLink>
+    <RouterLink to="/trainers">Trainers</RouterLink>
+    <RouterLink to="/trainer/apply">Become Trainer</RouterLink>
 
-    <div style="margin-left:auto">
-      <template v-if="user">
-        <span>Hi, {{ user.userDetails }}</span>
-        <a href="/trainer/apply" style="margin-left:12px">Become a Trainer</a>
-        <a href="/.auth/logout" style="margin-left:12px">Sign out</a>
-      </template>
-      <template v-else>
-        <a href="/.auth/login/github">Sign in</a>
-      </template>
-    </div>
+    <!-- right: auth -->
+    <span style="margin-left:auto"></span>
+    <template v-if="user">
+      <span>Hi, {{ user.userDetails }}</span>
+      <RouterLink to="/dashboard" style="margin-left:12px">Dashboard</RouterLink>
+      <a href="/.auth/logout" style="margin-left:12px">Sign out</a>
+    </template>
+    <template v-else>
+      <a href="/.auth/login/github">Sign in</a>
+    </template>
   </nav>
 </template>
+
 
