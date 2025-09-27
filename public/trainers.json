@@ -1,0 +1,11 @@
+[
+  {
+    "id": "t1",
+    "name": "Alex K",
+    "skills": ["Azure", "DevOps"],
+    "rate": 50,
+    "availability": "Weeknights",
+    "approved": true
+  }
+]
+

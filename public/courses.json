@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "title": "Azure Fundamentals",
+    "description": "Learn the basics of Microsoft Azure."
+  },
+  {
+    "id": 2,
+    "title": "DevOps with GitHub Actions",
+    "description": "CI/CD pipelines using GitHub Actions and Azure."
+  },
+  {
+    "id": 3,
+    "title": "PianoVue.js for Beginners",
+    "description": "Build interactive web apps with Vue 3."
+  }
+]
+
+
