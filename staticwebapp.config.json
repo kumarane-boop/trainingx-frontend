@@ -2,20 +2,17 @@
   "navigationFallback": { "rewrite": "/index.html" },
   "routes": [
     { "route": "/dashboard", "allowedRoles": ["authenticated"] },
-
-    // allow public read of courses
     { "route": "/api/courses", "allowedRoles": ["anonymous", "authenticated"] },
-
-    // keep other APIs protected
     { "route": "/api/*", "allowedRoles": ["authenticated"] }
   ],
   "responseOverrides": {
     "401": {
-      "redirect": "/.auth/login/github",
-      "statusCode": 302
+      "statusCode": 302,
+      "redirect": "/.auth/login/github"
     }
   }
 }
+
 
 
 

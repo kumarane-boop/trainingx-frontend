@@ -1,0 +1,12 @@
+{
+  "configurations": {
+    "trainingx": {
+      "appLocation": "src",
+      "outputLocation": "dist",
+      "apiLocation": "api",
+      "appDevserverUrl": "http://localhost:5173",
+      "run": "npm run dev"
+    }
+  }
+}
+
