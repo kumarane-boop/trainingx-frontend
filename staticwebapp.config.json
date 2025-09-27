@@ -5,22 +5,17 @@
 
     { "route": "/courses", "allowedRoles": ["anonymous", "authenticated"] },
     { "route": "/trainers", "allowedRoles": ["anonymous", "authenticated"] },
-
     { "route": "/trainer/apply", "allowedRoles": ["authenticated"] },
-    { "route": "/trainer/dashboard", "allowedRoles": ["trainer"] },
-
-    { "route": "/admin", "allowedRoles": ["admin"] },
 
     { "route": "/api/courses", "allowedRoles": ["anonymous", "authenticated"] },
     { "route": "/api/trainers/list", "allowedRoles": ["anonymous", "authenticated"] },
-    { "route": "/api/trainers/apply", "allowedRoles": ["authenticated"] },
-    { "route": "/api/trainers/my", "allowedRoles": ["trainer"] },
-    { "route": "/api/admin/*", "allowedRoles": ["admin"] }
+    { "route": "/api/trainers/apply", "allowedRoles": ["authenticated"] }
   ],
   "responseOverrides": {
     "401": { "statusCode": 302, "redirect": "/.auth/login/github" }
   }
 }
+
 
 
 

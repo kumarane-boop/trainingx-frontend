@@ -1,12 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import LoginView from '../views/LoginView.vue'
-import DashboardView from '../views/DashboardView.vue'
 import CoursesView from '../views/CoursesView.vue'
+import TrainersView from '../views/TrainersView.vue'
+import TrainerApplyView from '../views/TrainerApplyView.vue'
+import DashboardView from '../views/DashboardView.vue'
+import LoginView from '../views/LoginView.vue'
 
 const routes = [
-  { path: '/', name: 'login', component: LoginView },
-  { path: '/dashboard', name: 'dashboard', component: DashboardView, meta: { requiresAuth: true } },
-  { path: '/courses', name: 'courses', component: CoursesView }
+  { path: '/', redirect: '/courses' },
+  { path: '/courses', component: CoursesView },
+  { path: '/trainers', component: TrainersView },
+  { path: '/trainer/apply', component: TrainerApplyView },
+  { path: '/dashboard', component: DashboardView },
+  { path: '/login', component: LoginView },
+  // catch-all: redirect unknown routes back to Courses
+  { path: '/:pathMatch(.*)*', redirect: '/courses' }
 ]
 
 const router = createRouter({
@@ -15,6 +22,8 @@ const router = createRouter({
 })
 
 export default router
+
+
 
 
 
